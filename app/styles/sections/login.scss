@@ -1,0 +1,132 @@
+////////////////////////////////////////////
+// Login
+////////////////////////////////////////////
+
+#login.active{
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+
+#login{
+	font-family: $mainfont;
+	display: block;
+	position: absolute;
+	top: -5000px;
+	left: -5000px;
+	font-size: 0;
+	text-align: left;
+	//@extend .rasterForSpeed; //this makes the text harder to read but animation is smooth
+
+	.heading.online{
+		background-color: $lightGray;
+		display: block;
+
+		.title{
+			font-family: $headerfont;
+			font-size: 19px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			padding: 15px 10px;
+		}
+	}
+
+	.headingD{
+		background-color: $lightGray;
+		text-align: left;
+		padding: 15px 10px;
+
+		.title{
+			font-family: $headerfont;
+			font-size: 19px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			padding-bottom: 5px;
+		}
+
+		.body{
+			font-size: 14px;
+		}
+	}
+
+	.heading.online{
+		.title{
+			display: inline-block;
+		}
+
+		input.signout{
+			float: right;
+			margin: 8px 10px;
+		}
+	}
+
+	#loginForm.active{
+		display: block;
+	}
+
+	#loginForm{
+		display: none;
+		padding: 10px;
+		font-size: 0;
+		margin: 0;
+		background-color: $threadDarkGray;
+		box-sizing: border-box;
+
+		input{
+			width: 40%;
+			margin: 0;
+			border-right: 10px solid $threadDarkGray;
+		}
+
+		input.submit{
+			width: 20%;
+			border: none;
+			vertical-align: top;
+		}
+
+		@media (max-width: 599px){
+			input{
+				width: 33%;
+			}
+
+			input.submit{
+				width: 34%;
+			}
+		}
+	}
+
+	.profile.active{
+		display: block;
+	}
+
+	.profile{
+		display: none;
+		font-size: 0px;
+		color: $darkGray;
+		background-color: $backgroundGray;
+
+		.loginResult{
+			position: relative;
+			font-size: 14px;
+			line-height: 1.5;
+			color: $white;
+			padding: 10px;
+			font-variant: small-caps;
+			background-color: $mediumGray;
+
+			.logout{
+				color: $white;
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 10px;
+				cursor: pointer;
+				transition: background-color 0.25s ease-out 0s;
+			}
+
+			.logout:hover{
+				background-color: $accentBrightColor;
+			}
+		}
+	}
+}

@@ -1,0 +1,18 @@
+////////////////////////////////////////////
+// Anim
+////////////////////////////////////////////
+
+@-webkit-keyframes effects{
+	0%{
+		text-shadow: -15px 0 10px rgba($brightWhite, 0);
+	}
+	25%{
+		text-shadow: 0 0 25px rgba($brightWhite, 1);
+	}
+	50%{
+		text-shadow: 15px 15px 10px rgba($brightWhite, 0);
+	}
+	100%{
+		text-shadow: 15px 15px 10px rgba($brightWhite, 0);
+	}
+}

@@ -1,0 +1,533 @@
+////////////////////////////////////////////
+// Profile
+////////////////////////////////////////////
+
+#memberPopup{
+	@extend #loaderOverlay;
+}
+
+.profile{
+	text-align: left;
+	color: $darkGray;
+
+	.heading{
+		text-align: left;
+		padding: 15px 10px;
+		background-color: $lightGray;
+
+		.title{
+			font-family: $headerfont;
+			font-size: 19px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		.body{
+			font-size: 14px;
+		}
+	}
+
+	.psn{
+		background-color: $lightGray;
+		margin-bottom: 10px;
+		width: 100%;
+		box-sizing: border-box;
+
+		.member{
+			background-color: $backgroundGray;
+			@extend .stripeBackground;
+
+			.nameBackground{
+				background-color: rgba($backgroundGray, 0.8);
+
+				.close{ //this guy is all weird because of the X
+					@extend .rasterForSpeed; // this makes the text harder to read
+					position: absolute;
+					color: $lightGray;
+					font-size: 32px;
+					margin: 10px;
+					padding: 2px 10px;
+					background-color: $mediumGray;
+					right: 0;
+					z-index: 11;
+					cursor: pointer;
+				}
+
+				.close:hover{
+					color: $white;
+					background-color: $accentBrightColor;
+				}
+
+				.name{
+					font-family: $headerfont;
+					padding: 20px 10px;
+					color: $white;
+					font-size: 19px;
+					text-align: left;
+					letter-spacing: 19px;
+					text-transform: uppercase;
+					width: 100%;
+					box-sizing: border-box;
+					overflow: hidden;
+
+					span{
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+
+		.online{
+			font-size: 11px;
+			text-align: left;
+			padding: 10px;
+			letter-spacing: 1px;
+		}
+
+		.avatar{
+			display: table-cell;
+			position: relative;
+			width: 125px;
+			height: 125px;
+			line-height: 0;
+
+			img{
+				width: 100%;
+			}
+		}
+
+		.trophyHolder{
+			display: table;
+			border-spacing: 10px;
+			box-sizing: border-box;
+		}
+
+		.trophy{
+			@extend .rasterForSpeed;
+			display: table-cell;
+			position: relative;
+			width: 75px;
+			vertical-align: middle;
+			text-align: center;
+			box-sizing: border-box;
+			transition: background-color 0.25s ease-out 0s;
+			color: $white;
+			background-color: $backgroundGray;
+			@extend .stripeBackground;
+
+			.text{
+				position: relative;
+				top: -10px;
+				font-family: $mainfont;
+				font-size: 14px;
+				font-variant: small-caps;
+				transition: color 0.25s ease-out 0s;
+				letter-spacing: 1px;
+				z-index: 2;
+			}
+
+			@media (max-width: 600px){
+				.text{
+					font-size: 13px;
+				}
+			}
+
+			.icon, i.fa{
+				position: absolute;
+				width: 20px;
+				bottom: 10px;
+				left: 50%;
+				margin-left: -10px;
+				z-index: 2;
+			}
+
+			i.fa{
+				font-size: 20px;
+				color: $accentBrightColor;
+				transition: color 0.25s ease-out 0s;
+			}
+
+			.fill, .bg{
+				position: absolute;
+				left: 0px;
+				bottom: 0px;
+				width: 100%;
+				height: 5px;
+				box-sizing: border-box;
+				//background-color: transparentize($accentBrightColor, 0.75);
+				background-color: $accentBrightColor;
+				transition: height 0.25s ease-out 0s, background-color 0.25s ease-out 0s;
+			}
+
+			.bg{
+				height: 100%;
+				background-color: rgba($backgroundGray, 0.8);
+			}
+		}
+
+
+
+		.trophy.bronze{
+			.fill{
+				//height: 60%;
+				//background-color: transparentize($bronze, 0.75);
+				background-color: $bronze;
+			}
+		}
+
+		.trophy.silver{
+			.fill{
+				//height: 40%;
+				//background-color: transparentize($silver, 0.75);
+				background-color: $silver;
+			}
+		}
+
+		.trophy.gold{
+			.fill{
+				//height: 20%;
+				//background-color: transparentize($gold, 0.75);
+				background-color: $gold;
+			}
+		}
+
+		.trophy.platinum{
+			.fill{
+				//height: 7%;
+				//background-color: transparentize($platinum, 0.75);
+				background-color: $platinum;
+			}
+		}
+
+		.trophy:hover{
+			.text{
+				color: $white;
+			}
+
+			.fill{
+				height: 100%;
+				background-color: $accentBrightColor;
+			}
+
+			.icon{
+				path, rect{
+					transition: fill 0.25s ease-out 0s;
+					fill: $white;
+				}
+			}
+
+			i.fa{
+				color: $white;
+			}
+		}
+
+		@media (max-width: 859px){
+			.trophyHolder{
+				width: 100%;
+			}
+
+			.avatar{
+				display: none;
+			}
+
+			.trophy{
+				width: 20%;
+				height: 100px;
+			}
+		}
+	}
+
+	.accolades{
+		font-size: 14px;
+		padding: 0 0 10px;
+		background-color: $lightGray;
+		margin-bottom: 10px;
+		text-transform: capitalize;
+
+		.tier{
+			width: 100%;
+			margin-bottom: 20px;
+		}
+
+		.tier:last-child{
+			margin-bottom: 0;
+		}
+
+		.accolade{
+			display: inline-block;
+			opacity: 0.25;
+			text-align: center;
+			//width: 100px;
+			//max-width: 20%;
+			width: 20%; //5 icons per row
+
+			img{
+				width: 50%;
+				max-width: 75px; //same size as the image icons
+				opacity: 0.5;
+				-webkit-filter: brightness(0);
+			}
+		}
+
+		.accolade.active{
+			opacity: 1;
+
+			img{
+				opacity: 1;
+				-webkit-filter: none;
+			}
+		}
+	}
+
+	.games{
+		//margin-bottom: 10px;
+
+		.game{
+			position: relative;
+			font-size: 14px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			color: $white;
+			padding: 15px 20px 15px 20px;
+			background-repeat: no-repeat;
+			text-align: left;
+			@extend .rasterForSpeed;
+			transition: background-color 0.25s ease-out 0s, letter-spacing 0.25s ease-out 0s;
+
+			.fill{
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				height: 100%;
+				width: 10px;
+			}
+
+			.fill.fpselite{background-color: $fpselite;}
+			.fill.fps{background-color: $fps;}
+			.fill.rts{background-color: $rts;}
+			.fill.rpg{background-color: $rpg;}
+			.fill.mmo{background-color: $mmo;}
+			.fill.sports{background-color: $sports;}
+			.fill.vehicle{background-color: $vehicle;}
+
+			.type, .count, a.url{
+				color: rgba(0,0,0,0);
+				letter-spacing: 4px;
+				margin-left: 20px;
+				transition: none;
+			}
+
+			a.url{
+				cursor: pointer;
+				float: right;
+			}
+
+			@media (max-width: 700px){
+				.type, .count, a.url{
+					display: block;
+					color: rgba($white, 0.25);
+					margin: 0;
+					float: none;
+				}
+
+				a.url{
+					float: none;
+				}
+			}
+		}
+
+		.game:hover{
+			background-image: none !important;
+			color: $darkGray;
+			letter-spacing: 4px;
+
+			.type, .count, a.url{
+				color: $darkGray;
+			}
+		}
+	}
+
+	.systems{
+		font-size: 14px;
+		padding: 0 0 10px;
+		background-color: $lightGray;
+		margin-bottom: 10px;
+
+		.system{
+			display: inline-block;
+			opacity: 0.25;
+			text-align: center;
+			width: 150px;
+			max-width: 25%;
+			text-transform: uppercase;
+
+			img{
+				width: 75%;
+				max-width: 110px; //same size as the image icons
+			}
+		}
+
+		.system.active{
+			opacity: 1;
+		}
+	}
+
+	@media (max-width: 500px){
+		.accolades, .systems{
+			font-size: 10.5px; //Some long accolade names barely fit on mobile with 11px
+		}
+	}
+
+	.forum{
+		font-size: 14px;
+		padding: 0 0 10px;
+		background-color: $lightGray;
+		margin-bottom: 10px;
+
+		.stat{
+			line-height: 1.5;
+			padding: 0 10px;
+		}
+	}
+
+	.reputation{
+		font-size: 14px;
+		background-color: $lightGray;
+		margin-bottom: 10px;
+
+		.career{
+			color: $darkGray;
+			background-color: $lightGray;
+			text-transform: none;
+			padding: 0 0 10px 0; //padding-bottom
+			letter-spacing: 1px;
+		}
+	}
+
+	.container{
+		display: table-cell;
+		vertical-align: top;
+		padding-right: 10px;
+
+		.avatar{
+			position: relative;
+			width: 150px;
+			height: 150px;
+			margin: 5px 0 5px 10px;
+			//background-color: $brightWhite;
+
+			img{
+				width: 100%;
+			}
+		}
+
+		.attrBar{
+			display: table;
+			margin: 5px 0;
+			width: 260px;
+			text-align: left;
+			box-sizing: border-box;
+			background-color: $backgroundGray;
+			@extend .stripeBackground;
+
+			.key{
+				display: table-cell;
+				padding: 5px 10px;
+				color: $darkGray;
+				background-color: $lightGray;
+				white-space: nowrap;
+				transition: color 0.25s ease-out 0s;
+			}
+
+			.value{
+				display: table-cell;
+				padding: 5px 10px;
+				color: $lightGray;
+				background-color: rgba($backgroundGray, 0.8);
+				width: 100%;
+				transition: background-color 0.25s ease-out 0s;
+			}
+
+			.value.warning{
+				background-color: rgba(99,25,25,0.8);
+			}
+		}
+
+		.attrBar:first-child, .attrBar:last-child{
+			margin: 0;
+		}
+
+		.attrDef{
+			display: table;
+			width: 275px;
+			text-align: left;
+			box-sizing: border-box;
+			background-color: $backgroundGray;
+			@extend .stripeBackground;
+
+			.key{
+				color: $lightGray;
+				padding: 5px 10px;
+				background-color: rgba($backgroundGray, 0.8);
+				transition: background-color 0.25s ease-out 0s;
+			}
+
+			.value{
+				padding: 5px 10px;
+				background-color: $lightGray;
+				line-height: 1.4; //1.5 elsewhere, but here it has to fit
+				transition: color 0.25s ease-out 0s;
+			}
+		}
+
+		.attrBar:hover{
+			.key{
+				color: $accentBrightColor;
+			}
+
+			.value{
+				background-color: $accentBrightColor;
+			}
+		}
+
+		.attrDef:hover{
+			.key{
+				background-color: $accentBrightColor;
+			}
+
+			.value{
+				color: $accentBrightColor;
+			}
+		}
+	}
+
+	@media (max-width: 859px){
+		.container{
+			display: block;
+			margin-top: 20px;
+			width: 100%;
+			box-sizing: border-box;
+
+			.attrBar{
+				width: 100%;
+			}
+
+			.attrDef{
+				width: initial;
+				margin: 0 0 5px 10px;
+
+				.value{
+					padding: 5px 10px 0 10px;
+				}
+			}
+
+			.attrDef:last-child{
+				margin-bottom: 5px;
+			}
+		}
+
+		.container:first-child{
+			margin-top: 0;
+		}
+	}
+}

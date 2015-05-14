@@ -1,0 +1,134 @@
+////////////////////////////////////////////
+// Elements
+////////////////////////////////////////////
+
+html, body{
+	height: 100%; //if you want divs to expand vertical by setting them to 100%
+	width: 100%;
+	margin: 0;
+	//@extend .stripeBackground; //giant performance hit, don't use - use #stripeUnderlay in main.scss instead fopr the striped background
+}
+
+body{
+	font-family: $mainfont;
+	font-size: 22px;
+	position: relative;
+	display: block; //for center
+	background-color: darken($backgroundGray, 2.5%);
+	@extend .disableSelect; // should not be able to select elements by default
+	@extend .disableTap;
+}
+
+@media (min-width: 860px){ //space for scrollbar
+	body{
+		max-width: 840px;
+		margin: auto;
+	}
+}
+
+ul, li{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	@extend .disableSelect;
+	@extend .disableTap;
+}
+
+div::selection, span::selection{
+	background: $accentBrightColor;
+	color: $white;
+}
+
+ul{
+	margin-bottom: 2em;
+}
+
+svg{
+	font-family: $mainfont !important;
+}
+
+a, a:hover, a:link, a:active, a:focus, a:visited{
+	text-decoration: none;
+	color: inherit;
+	@extend .pointer;
+	@extend .disableSelect;
+	@extend .disableTap;
+}
+
+img{
+	font-size: 0px;
+	line-height: 0px;
+	@extend .disableDrag;
+}
+
+input[type='checkbox']{
+	@extend .pointer;
+	@extend .disableSelect;
+	@extend .disableTap;
+	-webkit-appearance: none;
+	box-shadow: inset 1px 1px 1px rgba(0,0,0,0.25);
+}
+
+input.login, input.pw, textarea, .textarea{
+	display: inline-block;
+	font-family: $mainfont;
+	font-size: 14px;
+	padding: 10px;
+	margin: 0 10px 0 0;
+	background-color: $white;
+	color: $darkGray;
+	width: 250px;
+	box-sizing: border-box;
+	@extend .blankInput;
+}
+
+textarea, .textarea{
+	min-height: 150px;
+	width: 100%;
+	resize: none;
+	cursor: auto;
+}
+
+input.login:active, input.pw:active, input.login:focus, input.pw:focus, textarea:active, textarea:focus{
+	//box-shadow: inset 0 0 0 1px $accentBrightColor;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
+	//text-transform: uppercase;
+	font-variant: small-caps;
+	color: darken($lightGray, 17.5%);
+	opacity: 1;
+}
+
+input::selection, textarea::selection, .textarea::selection{
+	background: $accentBrightColor;
+	color: $white;
+}
+
+input.submit{
+	display: inline-block;
+	font-size: 14px;
+	padding: 10px 25px;
+	min-width: 100px;
+	box-sizing: border-box;
+	color: $white;
+	letter-spacing: 1px;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	background-color: $mediumGray;
+	cursor: pointer;
+	@extend .blankInput;
+}
+
+input.submit:hover{
+	background-color: $accentBrightColor;
+	color: $white;
+}
+
+label{
+	@extend .pointer;
+	@extend .disableSelect;
+	@extend .disableTap;
+	//font-weight: normal;
+	display: block;
+}

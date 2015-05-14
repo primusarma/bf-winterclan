@@ -1,0 +1,38 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<title>404 - Game over - page not found</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+		<!-- build:css(.tmp) styles/main.css -->
+		<link rel="stylesheet" href="https://winterclan.net/styles/fonts.css">
+		<link rel="stylesheet" href="https://winterclan.net/styles/font-awesome.min.css">
+		<link rel="stylesheet" href="https://winterclan.net/styles/main.css">
+		<!-- endbuild -->
+	</head>
+	<body>
+		<div id="loaderOverlay" class="active">
+			<div class="cover" style="background-color: transparent">
+				<div id="fourofour">
+					<a href="https://winterclan.net">
+						<img src="https://winterclan.net/images/noAvatar.png">
+						<div class="lostText">
+							<span class="numbers">40<span class="last">4</span></span>
+							<br>
+							<span>Game Ove<span class="last">r</span></span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			window.location.protocol === 'http:' ? window.location = 'https://winterclan.net' + window.location.pathname : 0;
+		</script>
+	</body>
+</html>

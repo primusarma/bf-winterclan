@@ -1,0 +1,1050 @@
+////////////////////////////////////////////
+// Games
+////////////////////////////////////////////
+
+#forum.active{
+	position: relative;
+	top: 0px;
+	left: 0px;
+}	
+
+#forum{
+	display: table;
+	position: absolute;
+	width: 100%;
+	top: -5000px;
+	left: -5000px;
+	font-size: 0;
+	text-align: left;
+	box-sizing: border-box;
+	background-color: $backgroundGray;
+
+	.heading{
+		display: table;
+		width: 100%;
+		text-align: left;
+		padding: 15px 10px;
+		background-color: $lightGray;
+		box-sizing: border-box;
+		margin-top: 10px;
+
+		.text{
+			font-size: 19px;
+			letter-spacing: 1px;
+			font-family: $headerfont;
+			text-transform: uppercase;
+		}
+
+		.subtext{
+			font-size: 14px;
+			padding-top: 5px;
+		}
+	}
+
+	.modTools{
+		.inputs{
+			padding: 10px;
+			background-color: $threadDarkGray;
+
+			input.name, input.about{
+				width: 200px;
+			}
+
+			input.createForum, input.deleteForum{
+				width: 150px;
+			}
+
+			.rank, .type{
+				display: inline-block;
+				position: relative;
+				font-size: 14px;
+				margin: 0 10px 0 0; //margin-right
+				width: 120px;
+				vertical-align: top;
+				max-height: 36px;
+				z-index: 2;
+
+				.arrow{
+					position: absolute;
+					right: 0;
+					width: 0;
+					height: 0;
+					border-left: 8px solid transparent;
+					border-right: 8px solid transparent;
+					border-top: 8px solid darken($lightGray, 17.5%); //this is also in _elements.scss
+					margin: 15px 10px;
+					pointer-events: none;
+				}
+
+				ul{
+					margin: 0;
+					background-color: $white;
+
+					li{
+						display: none;
+						padding: 10px;
+						cursor: pointer;
+					}
+
+					li:first-of-type{
+						display: block;
+					}
+
+					li.first{ //this item gets deleted after a user selects something
+						font-variant: small-caps;
+						color: darken($lightGray, 17.5%); //this is also in _elements.scss
+						//pointer-events: none;
+					}
+
+					li:hover{
+						background-color: $threadGray;
+					}
+
+					li:first-of-type:hover, li.first:hover{
+						background-color: transparent;
+					}
+				}
+			}
+
+			.type{
+				width: 110px;
+			}
+
+			.rank:hover, .type:hover{
+				z-index: 5;
+
+				ul{
+					li{
+						display: block;
+					}
+				}
+			}
+		}
+
+		.inputs.delete{
+			padding: 0 10px 10px;
+		}
+
+		@media (max-width: 859px){
+			.inputs input, .inputs .rank, .inputs .type{
+				width: 100% !important;
+				margin-bottom: 10px;
+				box-sizing: border-box;
+			}
+
+			.inputs.delete .deleteForum{
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.forumHeader{
+		display: table;
+		width: 100%;
+		font-size: 10px;
+		padding: 14px 10px;
+		height: 40px;
+		color: $white;
+		box-sizing: border-box;
+		//background-image: linear-gradient(to right, $brightWhite 60%, rgba($brightWhite, 0) 100%);
+		//background-color: transparent;
+		background-color: $mediumGray;
+
+		.text{
+			display: table-cell;
+			width: 90%;
+			text-transform: uppercase;
+			white-space: nowrap;
+		}
+	}
+
+	.forumContents{
+		font-size: 14px;
+
+		.forumInputHolder.createTopic{
+			display: none;
+			width: 100%;
+
+			.padder{
+				display: block;
+				padding: 10px;
+
+				.border{
+					border: 2px solid $white;
+					padding: 8px;
+					cursor: pointer;
+
+					.text{
+						font-size: 24px;
+						color: $white;
+					}
+
+					.textarea.body{
+						border: none;
+						width: 100%;
+					}
+
+					input.submit, textarea.body, .textarea.body{
+						margin-top: 10px;
+						display: none;
+					}
+
+					input.login{
+						display: none;
+					}
+
+					.textarea.body:hover{
+						border: none;
+						box-shadow: inset 0 0 0 1px $accentBrightColor;
+					}
+
+					input.name{
+						width: 100%;
+					}
+				}
+
+				.border.active{
+					border: 2px solid $brightWhite;
+
+					.text{
+						color: $brightWhite;
+						position: relative;
+						top: -10px;
+						left: -10px;
+						padding: 10px 10px 0 10px;
+					}
+
+					input.login, input.name, textarea.body, .textarea.body{
+						background-color: $brightWhite;
+						display: block;
+					}
+
+					input.submit{
+						display: block;
+					}
+				}
+			}
+
+			.dummycell{
+				display: table-cell; 
+			}
+		}
+
+		.forumInputHolder.createTopic.active{
+			display: block;
+		}
+
+		.forumInputHolder.createTopic.active:hover{
+			.padder{
+				.border{
+					border: 2px solid $brightWhite;
+
+					.text{
+						color: $brightWhite;
+					}
+				}
+			}
+		}
+
+		.forumGroup{
+			position: relative;
+			padding: 0 0 0 10px;
+			background-color: $threadGray;
+			//background-image: linear-gradient(to right, $threadGray 60%, rgba($threadGray, 85%) 100%);
+			transition: background-color 0.25s ease-out 0s;
+		}
+
+		.forumGroup.locked{
+			color: rgba(0,0,0,0.25);
+			pointer-events: none;
+		}
+
+		.forumGroup:hover{
+			background-color: $threadDarkGray;
+			//background-image: linear-gradient(to right, darken($lightGray, 12.5%) 60%, rgba(darken($lightGray, 12.5%), 85%) 100%);
+		}
+
+		.fill{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 10px;
+			height: 100%;
+			//background-color: rgba($accentBrightColor, 0.25);
+			background-color: mix($accentBrightColor, $threadDarkGray, 25%)
+		}
+
+		.fill.unread{
+			background-color: $accentBrightColor;
+		}
+
+		.forum, .forumInsideHeader{
+			display: block;
+			width: 100%;
+			padding: 10px;
+			box-sizing: border-box;
+			cursor: pointer;
+
+			.text{
+				width: 90%;
+				vertical-align: middle;
+				white-space: nowrap;
+			}
+
+			.entry{
+				display: block;
+				//padding: 10px;
+				width: 100%;
+				vertical-align: middle;
+				box-sizing: border-box;
+
+				.naming{
+					width: 100%;
+
+					.title{
+						//@extend .enableSelect;
+
+						font-family: $headerfont;
+						font-size: 19px;
+						letter-spacing: 1px;
+						//padding-bottom: 5px;
+
+						span{
+							//border-bottom: 1px dotted $darkGray;
+						}
+					}
+
+					.subtitle{
+
+					}
+				}
+			}
+
+			.topics, .posts, .last{
+				text-align: center;
+				width: 0px;
+			}
+
+			.last{
+				width: 10%;
+			}
+
+			.icon{
+				//display: table-cell;
+				//display: none;
+				float: right;
+				text-align: center;
+				vertical-align: middle;
+				//font-size: 20px;
+				font-size: 17px;
+				padding: 0 17px 0 5px; //used to be 0 15px 0 5px but it's done this way to align itself better with the larger grey icons underneath
+				margin-top: 7px;
+				line-height: 0.85;
+				//width: 0px;
+
+				.tally{
+					font-size: 14px;
+				}
+			}
+
+			.icon.lock{
+				font-size: 34px;
+			}
+		}
+
+		.subforumDivider{
+			position: relative;
+			height: 2px;
+			background-color: $threadGray;
+		}
+
+		.subforum{
+			display: none;
+			width: 100%;
+			padding: 0px 10px 2px 10px;
+			background-color: inherit;
+			box-sizing: border-box;
+			cursor: pointer;
+
+			.arrow{
+				display: none;
+				position: relative;
+				float: right;
+				font-size: 24px;
+				line-height: 0;
+				padding: 21px 20px;
+				color: $threadDarkGray;
+				pointer-events: none;
+			}
+
+			.delSubforum{
+				display: none;
+				position: relative;
+				float: right;
+				font-size: 24px;
+				line-height: 0;
+				padding: 20px 20px 15px 0;
+				color: $threadDarkGray;
+			}
+
+			.delSubforum:hover{
+				color: $accentBrightColor;
+			}
+
+			.entry{
+				display: block;
+				width: 100%;
+				padding: 10px;
+				font-size: 0;
+				background-color: $white;
+				box-sizing: border-box;
+
+				.textGroup{
+					display: inline-block;
+					padding: 0 10px;
+					vertical-align: middle;
+					//width: 100%;
+
+					.title{
+						//@extend .enableSelect;
+
+						font-family: $headerfont;
+						font-size: 19px;
+						letter-spacing: 1px;
+						//padding-bottom: 5px;
+						display: block;
+						width: 100%;
+						vertical-align: middle;
+
+						span{
+							//border-bottom: 1px dotted $darkGray;
+						}
+					}
+
+					.author{
+						font-size: 14px;
+						display: block;
+						width: 0px;
+						vertical-align: middle;
+					}
+				}
+			}
+
+			.entry.unread{
+				.forumAvatar{
+					background-color: $accentBrightColor;
+				}
+			}
+
+			.posts{
+				display: none;
+				font-size: 14px;
+				padding: 10px;
+				cursor: default;
+				background-color: $white;
+
+				.post:hover{
+					background-color: $white;
+					margin-left: 0;
+					padding-left: 25px;
+					//border-left: 10px solid $white;
+
+					.modifyBar{
+						color: inherit;
+						border-bottom: 2px solid $brightWhite;
+
+						.edit, .del, .quo{
+							visibility: visible;
+						}
+
+						.edit{
+							//@extend .disabled;
+						}
+					}
+				}
+
+				@media (max-width: 600px){
+					.post:hover{
+						padding-left: 10px;
+					}
+				}
+
+				.quote{
+					@extend .disableSelect;
+					background-color: $white;
+					padding: 10px;
+					min-height: 125px;
+					box-sizing: border-box;
+					border: 5px solid $brightWhite;
+					border-left: 0;
+					border-right: 0;
+					margin-bottom: 3px;
+					box-shadow: inset 0 0 0 2px $white;
+
+					.author{
+						padding: 0 10px 10px 10px;
+					}
+
+					.box{
+						margin: 0 10px;
+						padding: 10px;
+						color: $brightWhite;
+						background-color: lighten($backgroundGray, 5%);
+						line-height: 0;
+
+						.avatarHolder{
+							display: inline-block;
+							vertical-align: top;
+
+							img{
+								width: 30px;
+							}
+						}
+
+						.textHolder{
+							display: inline-block;
+							vertical-align: top;
+							line-height: 1.5;
+							margin-left: 10px;
+						}
+					}
+				}
+
+				.post{
+					position: relative;
+					padding: 10px 0 10px 25px;
+					transition: background-color 0.25s ease-out 0s;
+
+					.textGroup{
+						display: table-cell;
+						vertical-align: top;
+						padding: 0 10px;
+						line-height: 1.5;
+						width: 100%;
+						@extend .enableSelect;
+
+						.imageError{
+							display: inline-block;
+							padding: 10px;
+							color: $brightWhite;
+							background-color: $accentBrightColor;
+						}
+
+						img{
+							max-width: 600px;
+							max-height: 600px;
+						}
+
+						@media (max-width: 830px){ //don't let the image resize the mobile page
+							img{
+								max-width: 100% !important;
+							}
+						}
+					}
+
+					.modifyBar{
+						position: relative;
+						color: $white;
+						font-size: 14px;
+						text-align: right;
+						right: 0;
+						top: -10px;
+						padding: 15px 15px 15px 0px;
+						font-weight: bold;
+						font-variant: small-caps;
+						letter-spacing: 1px;
+						line-height: 0;
+						border-bottom: 2px solid $white;
+
+						.dated{
+							float: left;
+							font-size: 11px;
+							font-variant: normal;
+							font-weight: normal;
+							color: $darkGray;
+						}
+
+						.edit, .del, .quo{
+							visibility: hidden;
+							position: relative;
+							vertical-align: top;
+							top: -1px;
+							display: inline-block;
+							margin-right: 15px;
+							cursor: pointer;
+
+							.fa{
+								position: relative;
+								font-size: 14px;
+								top: 1px;
+								line-height: inherit;
+							}
+						}
+
+						.quo{
+							position: relative;
+							padding-left: 16px;
+
+							div{
+								position: absolute;
+								font-size: 42px;
+								font-weight: normal;
+								top: 12px;
+								left: -1px;
+							}
+						}
+
+						.edit:hover, .del:hover, .quo:hover{
+							color: $accentBrightColor;
+						}
+
+						div:last-child{
+							margin-right: 0px;
+						}
+					}
+				}
+
+				@media (max-width: 600px){
+					.post{
+						padding: 10px 0 10px 10px;
+					}
+				}
+
+				.padder{
+					display: block;
+
+					.textOptions{
+						background-color: $backgroundGray;
+						color: $brightWhite;
+						margin-top: 10px;
+						border: 1px solid $backgroundGray;
+
+						.fa{
+							padding: 15px;
+							cursor: pointer;
+							width: 50px;
+							box-sizing: border-box;
+							text-align: center;
+							//display: none; //temporary
+						}
+
+						.fa:hover{
+							color: $accentBrightColor;
+							background-color: $brightWhite;
+						}
+
+						.localFile{
+							display: inline-block;
+							position: relative;
+							padding: 15px;
+							cursor: pointer;
+							width: 50px;
+							height: 44px;
+							box-sizing: border-box;
+							vertical-align: top;
+							overflow: hidden;
+
+							input{
+								position: absolute;
+								left: -25px;
+								top: -25px;
+								opacity: 0;
+								overflow: hidden;
+								max-width: 50px;
+								padding: 150px; //you need to get the button part to be off the screen otherwise it'll not allow you to do cursor:pointer
+								max-height: 44px;
+								position: relative;
+								display: inline-block;
+								vertical-align: top;
+								box-sizing: border-box;
+								z-index: 1;
+								cursor: pointer;
+							}
+
+							.fa{
+								display: block;
+								position: absolute;
+								left: 0;
+								top: 0;
+								z-index: 2;
+								pointer-events: none;
+								background-color: inherit;
+								color: inherit;
+							}
+						}
+
+						.localFile:hover{
+							color: $accentBrightColor;
+							background-color: $brightWhite;
+						}
+					}
+
+					input.submit{
+						margin-top: 10px;
+					}
+
+					.textarea.body{
+						display: block;
+						background-color: $brightWhite;
+						border: 1px solid $backgroundGray !important;
+						border-top: none !important;
+
+						.imageError{
+							display: inline-block;
+							padding: 10px;
+							color: $brightWhite;
+							background-color: $accentBrightColor;
+						}
+					}
+
+					.textOptions:hover{
+						background-color: $accentBrightColor;
+					}
+
+					.textarea.body::-webkit-input-placeholder{
+						color: darken($white, 7.5%);
+					}
+				}
+
+				.padder:hover{
+					div.textOptions{
+						background-color: $accentBrightColor;
+						border: 1px solid $accentBrightColor;
+					}
+
+					.textarea.body{
+						border: 1px solid $accentBrightColor !important;
+						border-top: none !important;
+					}
+				}
+			}
+
+			.dummycell{
+				display: table-cell;
+				width: 0px;
+			}
+		}
+
+		.subforum.active{
+			display: block;
+		}
+
+		.subforum:hover{
+			.arrow{
+				display: block;
+
+				.arrowUp{
+					display: none;
+				}
+
+				.arrowDown{
+					display: block;
+				}
+			}
+
+			.delSubforum{
+				display: block;
+			}
+
+			.entry{
+				background-color: $brightWhite;
+
+				.forumAvatar{
+					.lastPost{
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		.subforum.open:hover{
+			.arrow{
+				display: block;
+
+				.arrowUp{
+					display: block;
+				}
+
+				.arrowDown{
+					display: none;
+				}
+			}
+
+			.entry{
+				.forumAvatar{
+					.lastPost{
+						opacity: 0;
+					}
+				}
+			}
+		}
+
+		.subforum.open, .subforum.open:hover{
+			.entry{
+				background-color: $brightWhite;
+
+				.forumAvatar{
+					.lastPost{
+						opacity: 0;
+					}
+				}
+			}
+
+			.posts{
+				display: block;
+				margin-bottom: 10px;
+				background-color: $brightWhite;
+			}
+		}
+
+		.profile{
+			display: table-cell;
+			cursor: pointer;
+
+			.name{
+				text-align: center;
+				margin-top: 5px;
+			}
+
+			.part{ //participation
+				text-align: center;
+				font-size: 11px;
+				font-weight: bold;
+				letter-spacing: 1px;
+				text-transform: uppercase;
+			}
+		}
+
+		a{
+			@extend .rasterForSpeed;
+			font-size: 10px;
+			transition: background-color 0.25s ease-out 0s, color 0.25s ease-out 0s;
+			font-weight: bold;
+			text-transform: uppercase;
+			color: $accentBrightColor;
+			letter-spacing: 1px;
+			padding: 2px 4px 2px;
+			border: 1px solid $accentBrightColor;
+		}
+
+		a:hover{
+			color: $white;
+			background-color: $accentBrightColor;
+		}
+
+		.avatar{
+			display: block;
+			vertical-align: middle;
+			position: relative;
+			width: 125px;
+			height: 125px;
+			//background-color: rgba(0,0,0,0.25);
+			box-shadow: inset 0 0 0 2px $brightWhite, inset 0 0 0 5px $brightWhite;
+			overflow: hidden;
+
+			.corner{
+				position: absolute;
+				top: -28px;
+				left: -28px;
+				width: 50px;
+				height: 50px;
+				background-color: $brightWhite;
+				z-index: 2;
+				transform: rotate(45deg);
+			}
+
+			img{
+				width: 115px;
+				padding: 5px;
+			}
+		}
+
+		@media (max-width: 830px){
+			.avatar{
+				width: 90px;
+				height: 90px;
+
+				img{
+					width: 80px;
+					padding: 5px;
+				}
+			}
+		}
+
+		.forumInsideHeader{
+			font-size: 10px;
+			line-height: 1.5;
+			color: $white;
+			text-transform: uppercase;
+			white-space: nowrap;
+			//background-color: $brightWhite;
+			//background-image: linear-gradient(to right, $brightWhite 60%, rgba($brightWhite, 0) 100%);
+			//background-color: transparent;
+			background-color: $mediumGray;
+			height: 40px;
+			padding: 12px 10px !important;
+			cursor: default;
+		}
+
+		.forumAvatar{
+			@extend .avatar;
+
+			display: inline-block;
+			background-color: $threadGray;
+			//background-color: inherit;
+			//box-shadow: inset 0 0 0 2px $brightWhite, inset 0 0 0 5px $threadGray;
+			box-shadow: inset 0 0 0 2px $brightWhite;
+			//box-shadow: inset 0 0 0 2px $brightWhite, inset 0 0 0 5px $brightWhite;
+			width: 45px;
+			height: 45px;
+
+			.count{
+				position: absolute;
+				font-size: 14px;
+				color: $brightWhite;
+				width: 100%;
+				text-align: center;
+				padding: 15px 0;
+				z-index: 2;
+			}
+
+			.corner{
+				width: 45px;
+				height: 45px;
+			}
+
+			.lastPost{
+				margin: 2px;
+				width: 41px;
+				height: 41px;
+				background-size: 100%;
+				opacity: 0;
+				transition: opacity 0.25s ease-out 0s;
+			}
+		}
+	}
+
+	.activityContents{
+		background-color: $lightGray;
+
+		.recent{
+			font-size: 0;
+			padding: 0 10px 10px;
+
+			.rpost{
+				display: inline-block;
+				position: relative;
+				font-size: 14px;
+				width: 33%;
+
+				.textHolder{
+					display: inline-block;
+					vertical-align: top;
+					margin: 0 10px;
+					max-width: 75%;
+					overflow: hidden;
+					
+					.dated{
+						font-size: 11px;
+						font-variant: normal;
+						font-weight: normal;
+						letter-spacing: 1px;
+						color: inherit !important;
+						margin-bottom: 2px;
+					}
+
+					.text{
+						white-space: nowrap;
+					}
+				}
+
+				img{
+					width: 45px;
+					height: 45px;
+				}
+			}
+
+			@media (max-width: 800px){
+				.rpost{
+					display: block;
+					margin-bottom: 10px;
+				}
+			}
+
+			.rpost:last-child{
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.browsers{
+		font-size: 14px;
+		padding: 0px 10px 10px;
+		background-color: $lightGray;
+
+		.member{
+			//margin-right: 10px;
+		}
+
+		.member:hover{
+			color: $accentBrightColor;
+		}
+
+		.member:last-child{
+			margin-right: 0;
+		}
+	}
+
+	.spotlight{
+		padding: 0 0 5px 10px;
+		color: $darkGray;
+		background-color: $lightGray;
+		text-transform: none;
+		letter-spacing: 1px;
+		font-size: 14px;
+
+		.container{
+			display: table-cell;
+			vertical-align: top;
+			padding: 0 10px 5px 0;
+			line-height: 0;
+
+			img{
+				width: 88px;
+			}
+
+			.attrBar{
+				display: table;
+				margin: 0 0 5px 0;
+				width: 100%;
+				text-align: left;
+				line-height: 1.15;
+				box-sizing: border-box;
+				//border: 1px solid $backgroundGray;
+				background-color: $backgroundGray;
+				@extend .stripeBackground;
+
+				.key{
+					display: table-cell;
+					padding: 5px 10px;
+					color: $darkGray;
+					background-color: $lightGray;
+					white-space: nowrap;
+				}
+
+				.value{
+					display: table-cell;
+					padding: 5px 10px;
+					color: $lightGray;
+					background-color: rgba($backgroundGray, 0.8);
+					//background-image: linear-gradient(to right, rgba(62, 42, 39, 0.9) 0%, rgba(45, 49, 55, 0) 100%);
+					width: 100%;
+				}
+			}
+
+			.attrBar:last-child{
+				margin: 0;
+			}
+		}
+	}
+}

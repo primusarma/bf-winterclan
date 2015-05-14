@@ -1,0 +1,359 @@
+////////////////////////////////////////////
+// Fonts
+////////////////////////////////////////////
+
+$arial: Arial, Helvetica, sans-serif;
+$georgia: Georgia, 'Times New Roman', serif;
+$verdana: Verdana, Arial, sans-serif;
+$arimo: 'Arimo', sans-serif;
+$cinzel: 'Cinzel', sans-serif;
+$orbitron: 'Orbitron', sans-serif;
+$raleway: 'Raleway', sans-serif;
+$quicksand: 'Quicksand', sans-serif;
+
+$logofont: 'Title';
+//$headerfont: 'Header';
+
+$mainfont: $arimo;
+$headerfont: $raleway;
+$bodyfont: $arimo;
+$serif: $cinzel;
+
+////////////////////////////////////////////
+// Glyph coloring
+////////////////////////////////////////////
+
+$accentColor: #428DCE;
+$accentBrightColor: #428DCE;
+$white: #E9E9E9;
+$brightWhite: lighten($white, 5%); //lighten($backgroundGray, 10%)
+$lightGray: #DBE0E2;
+$mediumGray: #383d45; //not used
+$backgroundGray: darken($mediumGray, 5%);
+$darkGray: #222;
+
+$platinum: rgba(122,151,206,1);
+$gold: rgba(228,184,115,1);
+$silver: rgba(183,183,183,1);
+$bronze: rgba(219,135,101,1);
+
+$threadGray: darken($lightGray, 5%);
+$threadDarkGray: darken($threadGray, 5%);
+
+$offwhite: rgba(255,255,255,0.85);
+$offblack: rgba(0,0,0,0.75);
+
+$fpselite: rgba(210,158,107,1);
+$fps: rgba(174,104,96,1);
+$rts: rgba(141,125,100,1);
+$rpg: rgba(144,128,180,1);
+$mmo: rgba(121,156,176,1);
+$sports: rgba(151,160,118,1);
+$vehicle: rgba(205,195,143,1);
+
+
+
+////////////////////////////////////////////
+// Glyph modifiers
+////////////////////////////////////////////
+
+.accent{
+	color: $accentColor;
+}
+
+.loud{
+	font-weight: bold;
+}
+
+.stressed{
+	font-style: italic;
+}
+
+.strikethrough{
+	text-decoration: line-through;
+}
+
+.caps{
+	text-transform: uppercase;
+}
+
+.smallcaps{
+	font-variant: small-caps;
+}
+
+.capital{
+	text-transform: capitalize;
+}
+
+.space1px{
+	letter-spacing: 1px;
+}
+
+.space2px{
+	letter-spacing: 2px;
+}
+
+////////////////////////////////////////////
+// Rendering
+////////////////////////////////////////////
+
+.invisible{
+	visibility: hidden !important;
+}
+
+.visible{
+	visibility: visible !important;
+}
+
+.nodisplay{
+	display: none !important;
+}
+
+.disabled{
+	pointer-events: none;
+	opacity: 0.25;
+}
+
+.noInteraction{
+	pointer-events: none;
+}
+
+
+////////////////////////////////////////////
+// Positioning
+////////////////////////////////////////////
+
+.textLeft{
+	text-align: left;
+}
+
+.textRight{
+	text-align: right;
+}
+
+.textCenter{
+	text-align: center;
+}
+
+.pointer{
+	cursor: pointer !important;
+}
+
+.inline{
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+////////////////////////////////////////////
+// Behavior
+////////////////////////////////////////////
+
+.arrowNotCaret{
+	cursor: default;
+}
+
+.arrowCaret{
+	cursor: auto;
+}
+
+.enableSelect{
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+
+.disableSelect{
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	@extend .arrowNotCaret;
+}
+
+.disableTap{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline: 0;
+}
+
+.disableDrag{
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	user-drag: none;
+}
+
+.selectable{
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+}
+
+.containerWrapImage{ //for when a div contains an image and you want no space around the image, and perhaps want to use border-radius to round the image
+	display: inline-block;
+	overflow: hidden;
+	line-height: 0px;
+}
+
+
+////////////////////////////////////////////
+// Behavior bug hacks
+////////////////////////////////////////////
+
+.preventFlicker{
+	-webkit-transform: translate3d(0,0,0);
+}
+
+.scrollable{
+	@extend .preventFlicker;
+}
+
+.rasterForSpeed{
+	transform: translate(0px, 0px) translateZ(0px);
+}
+
+////////////////////////////////////////////
+// Input design
+////////////////////////////////////////////
+
+.blankInput{
+	-moz-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+	border: none;
+}
+
+
+////////////////////////////////////////////
+// Shadow design
+////////////////////////////////////////////
+
+.textShadowOnDarkText{
+	text-shadow: 0 1px 0 rgba(255,255,255,0.33), 0 -1px 0 rgba(0,0,0,0.15);
+}
+
+.textShadowOnLightText{
+	text-shadow: 0 1px 0 rgba(0,0,0,0.1);
+}
+
+
+////////////////////////////////////////////
+// Stripes
+////////////////////////////////////////////
+
+.stripeBackground{
+	background-size: 8px 8px;
+	background-image: linear-gradient(-45deg, lighten($backgroundGray, 2.5%) 0%, lighten($backgroundGray, 2.5%) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, lighten($backgroundGray, 2.5%) 50%, lighten($backgroundGray, 2.5%) 75%, rgba(0,0,0,0) 75%);
+}
+
+.stripeBackgroundDarken{
+	background-size: 8px 8px;
+	background-image: linear-gradient(-45deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.02) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.02) 75%, rgba(0,0,0,0) 75%);
+}
+
+.stripeBackgroundLighten{
+	background-size: 8px 8px;
+	background-image: linear-gradient(-45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 25%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, rgba(0,0,0,0) 75%);
+}
+
+.noStripeBackground{
+	background-image: none;
+}
+
+////////////////////////////////////////////
+// Background gradients & hovers
+////////////////////////////////////////////
+
+.backgroundGradient{
+	transition: background-color 0.25s ease-out 0s;
+	color: $white;
+	padding: 10px 20px;
+	letter-spacing: 1px;
+	@extend .rasterForSpeed;
+}
+
+.backgroundGradient.fpselite{background-image: linear-gradient(to right, $fpselite 10px, rgba(darken(desaturate($fpselite, 10%), 33%), 0.9) 0%, rgba($backgroundGray, 0) 100%);}
+.backgroundGradient.fps{background-image: linear-gradient(to right, $fps 10px, rgba(darken(desaturate($fps, 10%), 33%), 0.9) 0%, rgba($backgroundGray, 0) 100%);}
+.backgroundGradient.rts{background-image: linear-gradient(to right, $rts 10px, rgba(darken(desaturate($rts, 10%), 33%), 0.9) 0%, rgba($backgroundGray, 0) 100%);}
+.backgroundGradient.mmo{background-image: linear-gradient(to right, $mmo 10px, rgba(darken(desaturate($mmo, 10%), 33%), 0.9) 0%, rgba($backgroundGray, 0) 100%);}
+.backgroundGradient.sports{background-image: linear-gradient(to right, $sports 10px, rgba(darken(desaturate($sports, 10%), 33%), 0.9) 0%, rgba($backgroundGray, 0) 100%);}
+.backgroundGradient.vehicle{background-image: linear-gradient(to right, $vehicle 10px, rgba(darken(desaturate($vehicle, 10%), 33%), 0.9) 0%, rgba($backgroundGray, 0) 100%);}
+
+.backgroundGradient:hover{
+	background-image: none !important;
+	letter-spacing: 4px;
+	box-sizing: border-box;
+	color: $darkGray;
+
+	.type, .count{
+		transition: none;
+		color: $darkGray;
+	}
+
+	.fill{
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		height: 100%;
+		width: 10px;
+	}
+
+	.fill.fpselite{background-color: $fpselite;}
+	.fill.fps{background-color: $fps;}
+	.fill.rts{background-color: $rts;}
+	.fill.mmo{background-color: $mmo;}
+	.fill.sports{background-color: $sports;}
+	.fill.vehicle{background-color: $vehicle;}
+}
+
+.backgroundGradient.fpselite:hover{background-color: $fpselite;}
+.backgroundGradient.fps:hover{background-color: $fps;}
+.backgroundGradient.rts:hover{background-color: $rts;}
+.backgroundGradient.mmo:hover{background-color: $mmo;}
+.backgroundGradient.sports:hover{background-color: $sports;}
+.backgroundGradient.vehicle:hover{background-color: $vehicle;}
+
+.justBackgroundGradient.many{background-color: $lightGray;}
+.justBackgroundGradient.fpselite{background-color: $fpselite;}
+.justBackgroundGradient.fps{background-color: $fps;}
+.justBackgroundGradient.rts{background-color: $rts;}
+.justBackgroundGradient.mmo{background-color: $mmo;}
+.justBackgroundGradient.sports{background-color: $sports;}
+.justBackgroundGradient.vehicle{background-color: $vehicle;}
+
+////////////////////////////////////////////
+// colors
+////////////////////////////////////////////
+
+.platinum{
+	svg{
+		rect, path{
+			fill: $platinum;
+		}
+	}
+}
+
+.gold{
+	svg{
+		rect, path{
+			fill: $gold;
+		}
+	}
+}
+
+.silver{
+	svg{
+		rect, path{
+			fill: $silver;
+		}
+	}
+}
+
+.bronze{
+	svg{
+		rect, path{
+			fill: $bronze;
+		}
+	}
+}
